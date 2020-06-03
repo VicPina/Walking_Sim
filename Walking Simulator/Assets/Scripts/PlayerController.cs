@@ -21,12 +21,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = transform.forward * Input.GetAxis("Vertical");
-        rotation = new Vector3(0, Input.GetAxis("Horizontal"), 0);
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
     }
     public void FixedUpdate()
     {
         chController.Move(movement * Time.deltaTime * speed);
-        transform.Rotate(rotation * Time.deltaTime * rotationSpeed);
     }
 }
