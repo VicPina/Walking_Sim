@@ -1,16 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5;
-    public float rotationSpeed = 100;
-       
-    private Vector3 movement = Vector3.zero;
-    private Vector3 rotation = Vector3.zero;
-
-    private CharacterController chController;
+    public CharacterController controller;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +18,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + CryptoAPITransform.forward * z;
+
+        controller.Move(move * speed * Time.deltaTime);
     }
-    public void FixedUpdate()
-    {
-        chController.Move(movement * Time.deltaTime * speed);
-    }
+   
 }
