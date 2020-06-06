@@ -6,6 +6,8 @@ public class Raycast : MonoBehaviour
 {
     public LayerMask mask;
     public Camera fpv;
+
+    public string hitName;
     // Update is called once per frame
     void Update()
     {
@@ -13,7 +15,9 @@ public class Raycast : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, 100, mask)) 
         {
-            print(hitInfo.collider.gameObject.GetComponent("objectManager").name);
+            hitName = hitInfo.collider.gameObject.GetComponent<objectManager>().itemName;
+
+            print(hitName);
             Debug.DrawLine(ray.origin, hitInfo.point, Color.yellow);
             if(Input.GetMouseButtonDown(0)) { Destroy(hitInfo.transform.gameObject); }
         }
