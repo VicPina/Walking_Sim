@@ -15,12 +15,17 @@ public class Raycast : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, 100, mask)) 
         {
-            hitName = hitInfo.collider.gameObject.GetComponent<objectManager>().itemName;
+            hitName = hitInfo.collider.gameObject.GetComponent<objectManager>().GetName();
+            FindObjectOfType<UIText>().DisplayName(hitName);
 
-            print(hitName);
             Debug.DrawLine(ray.origin, hitInfo.point, Color.yellow);
             if(Input.GetMouseButtonDown(0)) { Destroy(hitInfo.transform.gameObject); }
         }
-        else { Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100, Color.white); }
+        else 
+        {             
+            hitName = "";
+            FindObjectOfType<UIText>().DisplayName(hitName);
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100, Color.white);
+        }
     }
 }
