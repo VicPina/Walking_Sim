@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class objectManager : MonoBehaviour
 {
-    public bool isDoor, isTask, isDrawer, isTrabuquette;
+    public bool isDoor, isTask, isDrawer, isBlunderbuss;
     public float openAngle, openDistance;
     public string openDirection;
     private int run;
@@ -12,21 +13,21 @@ public class objectManager : MonoBehaviour
     public string itemName;
     public string itemDialogue;
 
-    
+    public UnityEvent DefaultAction;
     // Start is called before the first frame update
     void Awake()
     {
         if (isDoor) { run = 0; }
         if (isTask) { run = 1; }
         if (isDrawer) { run = 2; }
-        if (isTrabuquette) { run = 3; }
-        
+        if (isBlunderbuss) { run = 3; }        
     }
 
 
     // Update is called once per frame
     public void Interaction()
     {
+        DefaultAction.Invoke();
         switch (run)
         {
             case 0:
