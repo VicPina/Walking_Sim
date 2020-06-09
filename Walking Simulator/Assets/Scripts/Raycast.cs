@@ -13,7 +13,7 @@ public class Raycast : MonoBehaviour
     {
         Ray ray = fpv.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, 100, mask)) 
+        if (Physics.Raycast(ray, out hitInfo, 5, mask)) 
         {
             hitName = hitInfo.collider.gameObject.GetComponent<objectManager>().itemName;
             FindObjectOfType<UIText>().DisplayName(hitName);
@@ -25,7 +25,7 @@ public class Raycast : MonoBehaviour
         {             
             hitName = "";
             FindObjectOfType<UIText>().DisplayName(hitName);
-            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100, Color.white);
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 5, Color.white);
         }
     }
 }

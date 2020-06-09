@@ -5,90 +5,90 @@ using UnityEngine.Events;
 
 public class objectManager : MonoBehaviour
 {
-    public bool isDoor, isTask, isDrawer, isBlunderbuss;
+    public bool isOpen;
     public float openAngle, openDistance;
     public string openDirection;
-    private int run;
+    private Vector3 backup;
     
     public string itemName;
     public string itemDialogue;
 
     public UnityEvent DefaultAction;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        if (isDoor) { run = 0; }
-        if (isTask) { run = 1; }
-        if (isDrawer) { run = 2; }
-        if (isBlunderbuss) { run = 3; }        
-    }
 
+    public void Awake()
+    {
+        backup = gameObject.transform.localPosition;
+    }
 
     // Update is called once per frame
     public void Interaction()
     {
         DefaultAction.Invoke();
-        switch (run)
-        {
-            case 0:
-                Door();
-                break;
-            case 1:
-                Interact();
-                break;
-            case 2:
-                Drawer();
-                break;
-            case 3:
-                Blunderbuss();
-                break;
-
-        }
     }
 
     public string GetName() { return itemName; }
     public string GetDialogue() { return itemDialogue; }
 
-    private void Door()
+    public void Door()
     {
+        string aux = openDirection;
+        if (isOpen) { openDirection = " "; }
         switch (openDirection)
         {
             case "x":
                 transform.localRotation = Quaternion.Euler(openAngle, 0f, 0f);
+                isOpen = true;
                 break;
             case "y":
                 transform.localRotation = Quaternion.Euler(0f, openAngle, 0f);
+                isOpen = true;
                 break;
             case "z":
                 transform.localRotation = Quaternion.Euler(0f, 0f, openAngle);
+                isOpen = true;
                 break;
             default:
                 transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                openDirection = aux;
+                isOpen = false;
                 break;
         }
     }
    
-   private void Interact()
+   public void Interact()
     {
         Destroy(gameObject);
     }
 
-    private void Drawer()
+    public void Drawer()
     {
-        Vector3 change = transform.localPosition;
+        string aux = openDirection;
+        Vector3 change = gameObject.transform.localPosition;
+        if (isOpen) { openDirection = " "; }
         switch (openDirection)
         {
             case "x":
                 change.x = openDistance;
+                backup.x = gameObject.transform.localPosition.x;
+                isOpen = true;
                 break;
             case "z":
                 change.z = openDistance;
+                backup.z = gameObject.transform.localPosition.z;
+                isOpen = true;
                 break;
             case "y":
                 change.y = openDistance;
+                backup.y = gameObject.transform.localPosition.y;
+                isOpen = true;
+                break;
+            default:
+                change = backup;
+                openDirection = aux;
+                isOpen = false;
                 break;
         }
-        transform.localPosition = change;
+        gameObject.transform.localPosition = change;
 
     }
 
