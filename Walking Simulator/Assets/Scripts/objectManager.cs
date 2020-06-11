@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -93,6 +94,39 @@ public class objectManager : MonoBehaviour
     }
 
     private void Blunderbuss()
+    {
+
+    }
+    
+    //Para prender y encender luces
+
+    var entro, boolean;
+    var Luz, GameObject;
+    public void Lights()
+    {
+        if (entro == false)
+        {
+            Luz.active = false;
+        }
+
+        if (entro == true)
+        {
+            Luz.active = true;
+        }
+    }
+
+    function OnTriggerEnter() 
+    {
+        entro == true;
+    }
+
+    function OnTriggerEnter()
+    {
+        entro == false;
+    }
+
+    //go to sleep
+    public void GoTosleep()
     {
 
     }
