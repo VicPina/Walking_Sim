@@ -413,7 +413,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-11438
+  m_Name: pb_Mesh15094
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1449,6 +1449,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trashcan
       objectReference: {fileID: 0}
+    - target: {fileID: 1651596267908994, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4479959965950044, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22
@@ -1504,6 +1508,26 @@ PrefabInstance:
     - target: {fileID: 4479959965950044, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489403692506480, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489403692506480, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489403692506480, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489403692506480, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489403692506480, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a804d1f37bbfe49bdeaa239dd31fa1, type: 3}
@@ -7234,7 +7258,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-33286
+  m_Name: pb_Mesh15164
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9378,6 +9402,44 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1508020929}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &809662896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1651596267908994, guid: 14a804d1f37bbfe49bdeaa239dd31fa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 313447853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &809662900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809662896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20432c3dceb5f54b907eb9e2fdbc53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
+  openAngle: 32.542
+  openDistance: 0
+  openDirection: z
+  itemName: 
+  itemDialogue: 
+  DefaultAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 809662900}
+        m_MethodName: Door
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &840524913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4479959965950044, guid: 14a804d1f37bbfe49bdeaa239dd31fa1,
@@ -13684,7 +13746,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5568
+  m_Name: pb_Mesh15474
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
