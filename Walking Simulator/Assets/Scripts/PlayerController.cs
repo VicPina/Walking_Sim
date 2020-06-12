@@ -12,8 +12,9 @@ public class PlayerController : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+        float y = -1f;
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * x + transform.up * y + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);
     }

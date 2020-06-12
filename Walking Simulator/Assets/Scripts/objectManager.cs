@@ -9,10 +9,12 @@ public class objectManager : MonoBehaviour
     public bool isOpen;
     public float openAngle, openDistance;
     public string openDirection;
-    private Vector3 backup;
-    
     public string itemName;
     public string itemDialogue;
+    
+    private Vector3 backup;
+
+    public GameObject lightSource;
 
     public UnityEvent DefaultAction;
 
@@ -100,10 +102,11 @@ public class objectManager : MonoBehaviour
     
     //Para prender y encender luces
 
-    var entro, boolean;
-    var Luz, GameObject;
-    public void Lights()
+    //var entro, boolean;
+    //var Luz, GameObject;
+    public void SwitchLight()
     {
+      /*
         if (entro == false)
         {
             Luz.active = false;
@@ -112,9 +115,9 @@ public class objectManager : MonoBehaviour
         if (entro == true)
         {
             Luz.active = true;
-        }
+        }*/
     }
-
+    /*
     function OnTriggerEnter() 
     {
         entro == true;
@@ -124,7 +127,7 @@ public class objectManager : MonoBehaviour
     {
         entro == false;
     }
-
+    */
     //go to sleep
     public void GoTosleep()
     {
