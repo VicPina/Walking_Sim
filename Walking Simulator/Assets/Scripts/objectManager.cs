@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class objectManager : MonoBehaviour
 {
-    public bool isOpen;
+    public bool isOpen, isOn;
     public float openAngle, openDistance;
     public string openDirection;
     public string itemName;
@@ -102,32 +102,14 @@ public class objectManager : MonoBehaviour
     
     //Para prender y encender luces
 
-    //var entro, boolean;
-    //var Luz, GameObject;
+    
     public void SwitchLight()
     {
-      /*
-        if (entro == false)
-        {
-            Luz.active = false;
-        }
-
-        if (entro == true)
-        {
-            Luz.active = true;
-        }*/
+        if (isOnlightSource.GetCompoment<Light>().active = false)
+        if else (!isOnlightSource.GetCompoment<Light>().active = true);
+        lightSource.GetCompoment<Light>().active = false;
     }
-    /*
-    function OnTriggerEnter() 
-    {
-        entro == true;
-    }
-
-    function OnTriggerEnter()
-    {
-        entro == false;
-    }
-    */
+   
     //go to sleep
     public void GoTosleep()
     {
