@@ -105,8 +105,8 @@ public class objectManager : MonoBehaviour
     
     public void SwitchLight()
     {
-        if (lightSource.enabled = !lightSource.enabled)
-        if else (!isOnlightSource.GetCompoment<Light>().active = true);
+        if (isOn) { lightSource.enabled = false; isOn = false; }
+        else if (!isOn){ lightSource.enabled = true; isOn = true; }
       
     }
    
