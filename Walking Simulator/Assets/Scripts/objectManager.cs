@@ -14,7 +14,7 @@ public class objectManager : MonoBehaviour
     
     private Vector3 backup;
 
-    public GameObject lightSource;
+    public Light lightSource;
 
     public UnityEvent DefaultAction;
 
@@ -105,9 +105,9 @@ public class objectManager : MonoBehaviour
     
     public void SwitchLight()
     {
-        if (isOnlightSource.GetCompoment<Light>().active = false)
+        if (lightSource.enabled = !lightSource.enabled)
         if else (!isOnlightSource.GetCompoment<Light>().active = true);
-        lightSource.GetCompoment<Light>().active = false;
+      
     }
    
     //go to sleep
