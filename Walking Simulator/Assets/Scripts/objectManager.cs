@@ -101,13 +101,11 @@ public class objectManager : MonoBehaviour
     }
     
     //Para prender y encender luces
-
-    
     public void SwitchLight()
     {
-        if (isOn) { lightSource.enabled = false; isOn = false; }
-        else if (!isOn){ lightSource.enabled = true; isOn = true; }
-      
+        isOn = !isOn;
+        if (isOn) { lightSource.enabled = false; }
+        else { lightSource.enabled = true; }
     }
    
     //go to sleep
