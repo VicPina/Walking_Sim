@@ -6,60 +6,61 @@ using UnityEngine.Events;
 
 public class objectManager : MonoBehaviour
 {
-    public bool isOpen, isOn;
+    public bool isActive, isCollectible;
     public float openAngle, openDistance;
-    public string openDirection;
-    public string itemName;
-    public string itemDialogue;
-    
-    private Vector3 backup;
+    public string openDirection, itemName, itemDialogue;
 
+    private Vector3 backup;
+    
     public Light lightSource;
+    [SerializeField]
+    private GameObject uiSummary, UI, player;
 
     public UnityEvent DefaultAction;
 
     public void Awake()
     {
         backup = gameObject.transform.localPosition;
+        if (isCollectible)
+        {
+            uiSummary.GetComponent<SummaryManager>().objectsToCollect.Add(itemName);
+        }
     }
 
-    // Update is called once per frame
     public void Interaction()
     {
         DefaultAction.Invoke();
     }
 
-    public string GetName() { return itemName; }
-    public string GetDialogue() { return itemDialogue; }
-
     public void Door()
     {
         string aux = openDirection;
-        if (isOpen) { openDirection = " "; }
+        if (isActive) { openDirection = " "; }
         switch (openDirection)
         {
             case "x":
                 transform.localRotation = Quaternion.Euler(openAngle, 0f, 0f);
-                isOpen = true;
+                isActive = true;
                 break;
             case "y":
                 transform.localRotation = Quaternion.Euler(0f, openAngle, 0f);
-                isOpen = true;
+                isActive = true;
                 break;
             case "z":
                 transform.localRotation = Quaternion.Euler(0f, 0f, openAngle);
-                isOpen = true;
+                isActive = true;
                 break;
             default:
                 transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 openDirection = aux;
-                isOpen = false;
+                isActive = false;
                 break;
         }
     }
    
-   public void Interact()
+    public void Interact()
     {
+        uiSummary.GetComponent<SummaryManager>().objectsCollected.Add(itemName);
         Destroy(gameObject);
     }
 
@@ -67,28 +68,28 @@ public class objectManager : MonoBehaviour
     {
         string aux = openDirection;
         Vector3 change = gameObject.transform.localPosition;
-        if (isOpen) { openDirection = " "; }
+        if (isActive) { openDirection = " "; }
         switch (openDirection)
         {
             case "x":
                 change.x = openDistance;
                 backup.x = gameObject.transform.localPosition.x;
-                isOpen = true;
+                isActive = true;
                 break;
             case "z":
                 change.z = openDistance;
                 backup.z = gameObject.transform.localPosition.z;
-                isOpen = true;
+                isActive = true;
                 break;
             case "y":
                 change.y = openDistance;
                 backup.y = gameObject.transform.localPosition.y;
-                isOpen = true;
+                isActive = true;
                 break;
             default:
                 change = backup;
                 openDirection = aux;
-                isOpen = false;
+                isActive = false;
                 break;
         }
         gameObject.transform.localPosition = change;
@@ -103,14 +104,17 @@ public class objectManager : MonoBehaviour
     //Para prender y encender luces
     public void SwitchLight()
     {
-        isOn = !isOn;
-        if (isOn) { lightSource.enabled = false; }
-        else { lightSource.enabled = true; }
+        if (isActive) { lightSource.enabled = false; isActive = false; }
+        else if (!isActive) { lightSource.enabled = true; isActive = true; }
     }
-   
+
     //go to sleep
     public void GoTosleep()
     {
-
+        UI.SetActive(true);
+        player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponentInChildren<MouseLook>().enabled = false;
+        player.GetComponentInChildren<Raycast>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
